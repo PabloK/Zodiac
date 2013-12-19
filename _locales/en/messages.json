@@ -1,6 +1,10 @@
 {
-  "l10nTabName": {
-    "message":"Localization"
-    ,"description":"name of the localization tab"
+  "extName": {
+    "message":"Bookmark anywhere"
+    ,"description":"The name of the extension."
+  },
+  "folderCreationTimeout": {
+    "message":"Could not create inactive folder on time",
+    "description":"The error message delivered when no inactive bookmark folder could be created"
   }
 }

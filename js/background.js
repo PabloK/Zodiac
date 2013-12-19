@@ -1,13 +1,52 @@
-// if you checked "fancy-settings" in extensionizr.com, uncomment this lines
+// TODO: Load location from localstorage
+// TODO: Show/Hide bookmarks depending on location
+  //Show bookmark
+  //Hide bookmark
 
-// var settings = new Store("settings", {
-//     "sample_setting": "This is how you use Store.js to remember values"
-// });
+// TODO: Handle bookmark settings
+InactiveFolder = function(){
+  this.folder = null;
+  this.set = function (folder) {
+    this.folder = folder;
+  };
+  this.get = function(){
+    return this.folder;
+  };
+};
 
+var appId = chrome.runtime.id;
+var inactiveFolder = new InactiveFolder();
 
-//example of using a message handler from the inject scripts
-chrome.extension.onMessage.addListener(
-  function(request, sender, sendResponse) {
-  	chrome.pageAction.show(sender.tab.id);
-    sendResponse();
-  });
+// Recursively search for the first occourence of title
+function traverseFindBookmark(node, searchString) {
+  if (node.title == searchString) {      
+      return node;
+  }
+  for (key in node.children) {  
+    ret = traverseFindBookmark(node.children[key], searchString);
+    if (ret != null) {
+      return ret; 
+    }
+  }
+  return null;
+}
+
+function hideshowBookmarks() {
+  if (inactiveFolder.get() == null){
+    throw chrome.i18n.getMessage("folderCreationTimeout");
+  }
+  
+  // Traverse Bookmarks in activefolder and move those that are labeled incorrectly
+  // Traverse Bookmarks in inactivefolder and move those that are labeled correctly
+}
+
+// Main
+chrome.bookmarks.getTree(function(data){
+  inactiveFolder.set(traverseFindBookmark(data[0], appId));
+  if(inactiveFolder.get() == null) {
+     chrome.bookmarks.create({ title : appId, parentId : "2"}, function(data) {
+        inactiveFolder.set(data);
+     });
+  }
+});
+setTimeout(hideshowBookmarks,150);
