@@ -31,6 +31,7 @@ function traverseFindBookmark(node, searchString) {
   return null;
 }
 
+// Hide and show bookmarks
 function hideshowBookmarks() {
   if (inactiveFolder.get() == null){
     throw chrome.i18n.getMessage("folderCreationTimeout");
