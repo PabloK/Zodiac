@@ -18,5 +18,13 @@
   "ClearSelection": {
     "message":"Clear selection",
     "description":"Clear selection"
-  }
+  },
+  "CurrentLocation": {
+    "message":"Current location",
+    "description":"Currently selected location for this browser"
+  },
+  "AddLocation": {
+    "message":"Add location",
+    "description":"A location to add to the selected bookmarks"
+  }  
 }

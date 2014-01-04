@@ -4,7 +4,7 @@ function Bookmark (chromeBookmark) {
   this.url = chromeBookmark.url;
   this.selected = false;
   this.parent = chromeBookmark.parentId;
-  this.labels = ["all","none"];
+  this.locations = ["all","none"];
 }
 
 Bookmark.prototype.save = function(){

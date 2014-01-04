@@ -3,11 +3,13 @@ function BookmarkCtrl($scope, $timeout) {
   localize($scope,"ClearSelection");
   localize($scope,"BookmarkSettings");
   localize($scope,"Locations");
-  console.log($scope.lz);
+  localize($scope,"CurrentLocation");
+  localize($scope,"AddLocation");
   
-  $scope.locations = [];
   
   //Initialize
+  $scope.locations = [];
+  $scope.locationToAdd = undefined;
   $scope.searhText = "";
   
   // find bookmarks
@@ -24,17 +26,30 @@ function BookmarkCtrl($scope, $timeout) {
   
   $scope.clearSelections = function(bookmark,index) {
     if (typeof($scope.bookmarks) == 'undefined') { return; }
-    console.log($scope.bookmarks.length);
+    
     for(var i=0; i < $scope.bookmarks.length; i++) {
       $scope.bookmarks[i].selected = false;
     }
   };
-  $scope.removeLabel = function(bookmark,index) {
-    bookmark.labels.splice(index,1);
+  $scope.addLocationToSelected = function() {
+    if (typeof($scope.locationToAdd) == 'undefined') { return; }
+    if (typeof($scope.bookmarks) == 'undefined') { return; }
+        
+    for(var i=0; i < $scope.bookmarks.length; i++) {
+      if ($scope.bookmarks[i].selected) {
+        $scope.bookmarks[i].locations.push($scope.locationToAdd)
+      }
+    }
   };
+  
+  $scope.removeLabel = function(bookmark,index) {
+    bookmark.locations.splice(index,1);
+  };
+  
   $scope.removeSearchText = function(e) {
     $scope.searchText = "";
   };
+  
 };
 
 var bookmarkList = []
