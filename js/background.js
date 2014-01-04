@@ -30,7 +30,6 @@ function traverseFindBookmark(node, searchString) {
   }
   return null;
 }
-
 chrome.bookmarks.getTree(function(data){
   inactiveFolder.set(traverseFindBookmark(data[0], appId));
   if(inactiveFolder.get() == null) {

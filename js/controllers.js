@@ -4,12 +4,19 @@ function BookmarkCtrl($scope, $timeout) {
   localize($scope,"BookmarkSettings");
   localize($scope,"Locations");
   localize($scope,"CurrentLocation");
-  localize($scope,"AddLocation");
+  localize($scope,"NewLocation");
+  localize($scope,"Search");
   
   
   //Initialize
   $scope.locations = [];
-  $scope.locationToAdd = undefined;
+  chrome.storage.sync.get("locations", function(data) {
+    if (typeof(data) != 'undefined' && typeof(data.locations) != 'undefined'){
+      $scope.locations = data.locations;
+      $scope.$digest();
+    }
+  });
+  $scope.locationToAdd = null;
   $scope.searhText = "";
   
   // find bookmarks
@@ -37,9 +44,19 @@ function BookmarkCtrl($scope, $timeout) {
         
     for(var i=0; i < $scope.bookmarks.length; i++) {
       if ($scope.bookmarks[i].selected) {
-        $scope.bookmarks[i].locations.push($scope.locationToAdd)
+        $scope.bookmarks[i].addLocation($scope.locationToAdd)
       }
     }
+  };
+  
+  $scope.addLocation = function(){
+    if (typeof($scope.newLocation.length) == 'undefined') {return;}
+    if ($scope.newLocation.length <= 0) {return;}
+    $scope.locations.push($scope.newLocation);
+    
+    // TODO get sync scope, add new keys, save new
+    
+    chrome.storage.sync.set({"locations": $scope.locations},function(){console.log($scope.locations)});
   };
   
   $scope.removeLabel = function(bookmark,index) {
@@ -49,7 +66,16 @@ function BookmarkCtrl($scope, $timeout) {
   $scope.removeSearchText = function(e) {
     $scope.searchText = "";
   };
-  
+  $scope.removeLocationFromSelected = function(){
+    if (typeof($scope.locationToAdd) == 'undefined') { return; }
+    if (typeof($scope.bookmarks) == 'undefined') { return; }
+        
+    for(var i=0; i < $scope.bookmarks.length; i++) {
+      if ($scope.bookmarks[i].selected) {
+        $scope.bookmarks[i].removeLocation($scope.locationToAdd)
+      }
+    }
+  };
 };
 
 var bookmarkList = []

@@ -6,9 +6,10 @@
 <div class="row">
   <div class="col-md-4">
     <div class="input-group">
-      <input type="text" placeholder="New location" class="form-control" />
+      <input type="text" ng-model="newLocation" placeholder="{{lz['NewLocation']}}" class="form-control" />
       <span class="input-group-btn">
-        <button class="btn btn-default " type="button">&nbsp;<span class="glyphicon-plus glyphicon">
+        <button class="btn btn-default" ng-click="addLocation()" type="button">
+          &nbsp;<span class="glyphicon-plus glyphicon">
           </span>&nbsp;</button>
       </span>
     </div>
@@ -37,26 +38,31 @@
         
         <span class="pull-right col-md-4">
           <div class="input-group">
-            <input ui-keydown="{esc: 'removeSearchText()'}" type="text" placeholder="Search" ng-model="searchText" class="form-control" />
-              <span class="input-group-btn">
-                <button ng-click="removeSearchText()" class="btn btn-default " type="button">
-                  &nbsp;
-                  <span class="glyphicon-remove glyphicon"></span>
-                  &nbsp;
-                </button>        
+            <input ui-keydown="{esc: 'removeSearchText()'}" type="text" placeholder="{{lz['Search']}}" ng-model="searchText" class="form-control" />
+            <span class=" check-element input-group-btn">
+              <button ng-click="removeSearchText()" class="btn btn-default " type="button">
+                &nbsp;
+                <span class="glyphicon-remove glyphicon"></span>
+                &nbsp;
+              </button>        
             </span>  
           </div>
         </span>
-        
         <span class="pull-right col-md-4">
+          
           <div class="input-group">
+            <span ng-bind="lz['Locations'] + ':'"></span>
+            </span>
             <span class="input-group-btn">
                 <button ng-click="addLocationToSelected()" class="btn btn-default " type="button">
-                  <span class="glyphicon-plus glyphicon"></span>  <span ng-bind="lz['AddLocation']"></span>
-                </button>        
+                  <span class="glyphicon-plus glyphicon"></span>&nbsp;
+                </button>
+                <button ng-click="removeLocationFromSelected()" class="btn btn-default " type="button">
+                  <span class="glyphicon-remove glyphicon"></span>&nbsp;
+                </button>
             </span>  
-            <select class="form-control" ng-model="locationToAdd">
-              <option value="test">test</option>
+            <select class="form-control" ng-model="locationToAdd" ng-options="location for location in locations">
+              <option value="test"></option>
             </select>
           </div>
         </span>
@@ -68,8 +74,8 @@
             <input ng-model="bookmark.selected" type="checkbox"/>
             <span ng-bind="bookmark.title | trunc: 50 "></span>
           </label>
-          <span class="extra-margin pull-right label label-success" ng-repeat="label in bookmark.locations">
-            <span ng-click="removeLabel(bookmark,$index)" class="pointer glyphicon-remove glyphicon"></span> <span ng-bind="label"></span>
+          <span class="extra-margin pull-right label label-success" ng-repeat="location in bookmark.locations">
+            <span ng-click="removeLabel(bookmark,$index)" class="pointer glyphicon-remove glyphicon"></span> <span ng-bind="location"></span>
           </span>
         </li> 
       </div>
