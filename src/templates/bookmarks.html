@@ -13,11 +13,6 @@
       </span>
     </div>
   </div>
-  <div class="col-md-8">
-    <select class="form-control">
-      <option>Default</option>
-    </select>  
-  </div>
 </div>
 <br />
 <div class="row">
@@ -43,10 +38,16 @@
     
     <div class="list-group">
       <div ng-repeat="bookmark in bookmarks | filter: searchText">
-        <a ng-class="{active : bookmark.selected}" 
-           ng-click="selectBookmark(bookmark)" 
-           class="list-group-item" 
-           ng-bind="bookmark.title"></a>
+        <li ng-class="{active : bookmark.selected}" class="list-group-item" >
+          <label>
+            <input ng-model="bookmark.selected" type="checkbox"/>
+            <span ng-bind="bookmark.title"></span>
+            <span ng-bind="bookmark.parent"></span>
+          </label>
+          <span class="extra-margin pull-right label label-success" ng-repeat="label in bookmark.labels">
+            <span ng-click="removeLabel(bookmark,$index)" class="glyphicon-remove glyphicon"></span> <span ng-bind="label"></span>
+          </span>
+        </li> 
       </div>
     </div>
   </div>

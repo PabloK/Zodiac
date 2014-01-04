@@ -19,15 +19,12 @@ function BookmarkCtrl($scope, $timeout) {
     $scope.$digest();
   });
   
-  
+  $scope.removeLabel = function(bookmark,index) {
+    bookmark.labels.splice(index,1);
+  };
   $scope.removeSearchText = function(e) {
     $scope.searchText = "";
   };
-  // functions
-  $scope.selectBookmark = function(obj) {
-    obj.selected = !obj.selected
-  };
-  
 };
 
 var bookmarkList = []

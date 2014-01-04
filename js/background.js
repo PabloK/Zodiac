@@ -41,11 +41,14 @@ chrome.bookmarks.getTree(function(data){
 });
 setTimeout(hideshowBookmarks,150);
 function hideshowBookmarks() {
+  if (false) {
   if (inactiveFolder.get() == null){
     throw chrome.i18n.getMessage("folderCreationTimeout");
   }
-  
   // Traverse Bookmarks in activefolder and move those that are labeled incorrectly
   // Traverse Bookmarks in inactivefolder and move those that are labeled correctly
+  }
+  console.log("Checking Bookmarks");
+  setTimeout(hideshowBookmarks,10000);
 }
 
