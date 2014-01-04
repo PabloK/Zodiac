@@ -1,7 +1,10 @@
 function BookmarkCtrl($scope, $timeout) {
   // localization  
-  $scope.localizeBookmarkSettings = chrome.i18n.getMessage("BookmarkSettings");
-  $scope.localizeLocations = chrome.i18n.getMessage("Locations");
+  localize($scope,"ClearSelection");
+  localize($scope,"BookmarkSettings");
+  localize($scope,"Locations");
+  console.log($scope.lz);
+  
   $scope.locations = [];
   
   //Initialize
@@ -19,6 +22,13 @@ function BookmarkCtrl($scope, $timeout) {
     $scope.$digest();
   });
   
+  $scope.clearSelections = function(bookmark,index) {
+    if (typeof($scope.bookmarks) == 'undefined') { return; }
+    console.log($scope.bookmarks.length);
+    for(var i=0; i < $scope.bookmarks.length; i++) {
+      $scope.bookmarks[i].selected = false;
+    }
+  };
   $scope.removeLabel = function(bookmark,index) {
     bookmark.labels.splice(index,1);
   };

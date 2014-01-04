@@ -14,5 +14,9 @@
   "BookmarkSettings": {
     "message":"Bookmarks locations settings",
     "description":"Bookmarks to lable with locations"
+  },
+  "ClearSelection": {
+    "message":"Clear selection",
+    "description":"Clear selection"
   }
 }
