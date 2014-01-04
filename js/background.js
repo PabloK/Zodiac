@@ -31,17 +31,6 @@ function traverseFindBookmark(node, searchString) {
   return null;
 }
 
-// Hide and show bookmarks
-function hideshowBookmarks() {
-  if (inactiveFolder.get() == null){
-    throw chrome.i18n.getMessage("folderCreationTimeout");
-  }
-  
-  // Traverse Bookmarks in activefolder and move those that are labeled incorrectly
-  // Traverse Bookmarks in inactivefolder and move those that are labeled correctly
-}
-
-// Main
 chrome.bookmarks.getTree(function(data){
   inactiveFolder.set(traverseFindBookmark(data[0], appId));
   if(inactiveFolder.get() == null) {
@@ -51,3 +40,12 @@ chrome.bookmarks.getTree(function(data){
   }
 });
 setTimeout(hideshowBookmarks,150);
+function hideshowBookmarks() {
+  if (inactiveFolder.get() == null){
+    throw chrome.i18n.getMessage("folderCreationTimeout");
+  }
+  
+  // Traverse Bookmarks in activefolder and move those that are labeled incorrectly
+  // Traverse Bookmarks in inactivefolder and move those that are labeled correctly
+}
+

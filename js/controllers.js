@@ -1,15 +1,34 @@
-var bookmarks = null
 function BookmarkCtrl($scope, $timeout) {
-  $scope.bookmarks = [];
+  // localization  
+  $scope.localizeBookmarkSettings = chrome.i18n.getMessage("BookmarkSettings");
+  $scope.localizeLocations = chrome.i18n.getMessage("Locations");
+  $scope.locations = [];
   
+  //Initialize
+  $scope.searhText = "";
+  
+  // find bookmarks
   chrome.bookmarks.getTree(function(data){
-    bookmarks = bookmarkTreeToListOfBookmarks(data[0]);
+    var tempBookmarks = bookmarkTreeToListOfBookmarks(data[0]);
+    $scope.bookmarks  = []
+    for(i = 0;i < tempBookmarks.length; i++) {
+      var temp = new Bookmark(tempBookmarks[i]);
+      $scope.bookmarks.push(temp); 
+    }
+    
+    $scope.$digest();
   });
   
-  // TODO set new timeout if this fails 3 times then throw error
-  $timeout(function(){ $scope.bookmarks = bookmarks}, 250, true);
-
-}
+  
+  $scope.removeSearchText = function(e) {
+    $scope.searchText = "";
+  };
+  // functions
+  $scope.selectBookmark = function(obj) {
+    obj.selected = !obj.selected
+  };
+  
+};
 
 var bookmarkList = []
 function bookmarkTreeToListOfBookmarks(node) {
@@ -22,4 +41,4 @@ function bookmarkTreeToListOfBookmarks(node) {
     }
   }
   return bookmarkList;
-}
+};

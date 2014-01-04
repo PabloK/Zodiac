@@ -6,5 +6,13 @@
   "folderCreationTimeout": {
     "message":"Could not create inactive folder on time",
     "description":"The error message delivered when no inactive bookmark folder could be created"
+  },
+  "Locations": {
+    "message":"Locations",
+    "description":"The currently used locations where bookmarks can be used"
+  },
+  "BookmarkSettings": {
+    "message":"Bookmarks locations settings",
+    "description":"Bookmarks to lable with locations"
   }
 }
