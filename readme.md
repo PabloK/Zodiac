@@ -8,8 +8,8 @@ Have you tired of having your work bookmarks filling chrome's bookmark bar at ho
 * Localstorage needs to be enabled.
 
 ###Getting started
-``` 
 Install the plugin from [Chrome webstore] (https://chrome.google.com/webstore/)
+```
 Browse to chrome://extensions/
 Add your locations
 Mark the location your currently at (do the same at other locations)
