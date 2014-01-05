@@ -9,7 +9,7 @@ Have you tired of having your work bookmarks filling chrome's bookmark bar at ho
 
 ###Getting started
 * Install the plugin from [Chrome webstore] (https://chrome.google.com/webstore/) 
-* Browse to [Extensions] (chrome://extensions/)
+* Browse to chrome://extensions/
 * Click Alternatives
 * Add your locations
 * Mark the location your currently at (do the same at other locations)
