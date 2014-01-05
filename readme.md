@@ -1,6 +1,6 @@
 Bookmark anywhere
 =================
-Have you tired of having your work bookmarks in filling your chrome browsers bookmark bar at home and vice versa. This chrome plugin attempts to solve this problem with as little work from you as possible.
+Have you tired of having your work bookmarks filling chrome's bookmark bar at home or vice versa. This chrome plugin attempts to solve this problem with as little hassle as possible.
 
 ###Requirements
 * Chrome browser.
@@ -9,7 +9,7 @@ Have you tired of having your work bookmarks in filling your chrome browsers boo
 
 ###Getting started
 ``` 
-Install the plugin from chrome plugins-store
+Install the plugin from [Chrome webstore] (https://chrome.google.com/webstore/)
 Browse to chrome://extensions/
 Add your locations
 Mark the location your currently at (do the same at other locations)
