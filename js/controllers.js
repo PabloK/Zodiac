@@ -5,19 +5,15 @@ function BookmarkCtrl($scope, $timeout) {
     return localize(string);
   }
   //Initialize
-  $scope.locations = [];
-  chrome.storage.sync.get("locations", function(data) {
-    if(data == null || data.locations == null) {
-      data = [];
-    };
-    if (typeof(data) != 'undefined' && typeof(data.locations) != 'undefined'){
-      $scope.locations = data.locations;
-      $scope.$digest();
-    }
-  });
+  $scope.locations = new LocationList(function(){ return; });
   $scope.locationToAdd = null;
   $scope.searhText = "";
   $scope.newLocation = "";
+  $scope.currentLocation = null;
+  chrome.storage.local.get('currentlocation', function(data){
+    $scope.currentLocation = data.currentlocation;
+    $scope.$digest();
+  });
   
   // find bookmarks
   chrome.bookmarks.getTree(function(data){
@@ -70,14 +66,17 @@ function BookmarkCtrl($scope, $timeout) {
   
   // Add a new location
   $scope.addLocation = function(){
-    // TODO refactor to location service
-    if (typeof($scope.newLocation.length) == 'undefined') {return;}
-    if ($scope.newLocation.length <= 0) {return;}
-    $scope.locations.push($scope.newLocation);
-    
-    // TODO get sync scope, add new keys, save new
-    chrome.storage.sync.set({"locations": $scope.locations},function(){console.log($scope.locations)});
+    $scope.locations.addLocation($scope.newLocation);
     $scope.newLocation = "";
+  };
+  
+  $scope.removeLocation = function(name){
+    $scope.locations.removeLocation(name);
+  };
+  
+  $scope.setCurrentLocation = function(name){
+    $scope.currentLocation = name;
+    chrome.storage.local.set({currentlocation : $scope.currentLocation});
   };
     
   // Clears the search text field

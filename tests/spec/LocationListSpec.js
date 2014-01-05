@@ -91,7 +91,7 @@ describe("Bookmark", function() {
       list.addLocation('Home');
       setTimeout(function(){
         done();
-      },100);
+      },25);
     });
 
     it("when adding is blocked an alert is shown", function(done) {
@@ -99,5 +99,25 @@ describe("Bookmark", function() {
       done();
     });
   });
-});
+  
+  describe("Remove nothing",function()  {
+    var list;  
+    
+    beforeEach(function(done) {
+      list = new LocationList(function(){return;});  
+      list.addLocation('Home');
+      setTimeout(function(){
+        list.removeLocation('No');
+      },25);
+      setTimeout(function(){
+        done();
+      },50);
+    });
 
+    it("when removing non existent item nothing happens", function(done) {
+      expect(list.locations.length).toBe(1);
+      expect(list.locations[0]).toBe("Home");
+      done();
+    });
+  });
+});

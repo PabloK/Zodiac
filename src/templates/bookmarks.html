@@ -17,7 +17,7 @@
                 tooltip="{{lz('AddNewLocationTip')}}"
                 tooltip-append-to-body="true"
                 class="btn btn-default" 
-                ng-click="addLocation()" 
+                ng-click="addLocation()"
                 type="button">
           &nbsp;<span class="glyphicon-plus glyphicon">
           </span>&nbsp;</button>
@@ -25,16 +25,16 @@
     </div>
   </div>
   <div class="col-md-8">
-      <span ng-class="{active : active==location}" 
+      <span ng-class="{active : currentLocation==location}" 
             class="pointer extra-margin extra-size label pull-left label-success" 
-            ng-repeat="location in locations">
+            ng-repeat="location in locations.locations">
         <span class="pointer"
               tooltip-placement="bottom"
-              ng-click="setCurrentLocation($index)" 
+              ng-click="setCurrentLocation(location)" 
               tooltip="{{lz('setCurrentLocationTip')}}"
               tooltip-append-to-body="true"
               ng-bind="location"></span>
-        <span ng-click="removeLocation($index)" 
+        <span ng-click="removeLocation(location)" 
               tooltip-placement="bottom" 
               tooltip="{{lz('RemoveLocationTip')}}"
               tooltip-append-to-body="true"
@@ -120,7 +120,7 @@
               tooltip="{{lz('Locations')}}" 
               tooltip-append-to-body="true"
               ng-model="locationToAdd" 
-              ng-options="location for location in locations">
+              ng-options="location for location in locations.locations">
         <option value="test"></option>
       </select>
       </div>
