@@ -70,7 +70,6 @@ function BookmarkCtrl($scope, $timeout) {
   
   // Add a new location
   $scope.addLocation = function(){
-      
     // TODO refactor to location service
     if (typeof($scope.newLocation.length) == 'undefined') {return;}
     if ($scope.newLocation.length <= 0) {return;}
