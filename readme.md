@@ -10,7 +10,7 @@ Have you tired of having your work bookmarks in filling your chrome browsers boo
 ###Getting started
 ``` 
 Install the plugin from chrome plugins-store
-Browse to [chrome://extensions]:chrome://extensions
+Browse to chrome://extensions/
 Add your locations
 Mark the location your currently at (do the same at other locations)
 Markup bookmarks that should only show up in specific locations
