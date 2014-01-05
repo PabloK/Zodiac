@@ -1,7 +1,4 @@
-function localize(scope, string)
+function localize(string)
 {
-  if (typeof(scope.lz) == 'undefined') {
-    scope.lz = {};  
-  }
-  scope.lz[string] = chrome.i18n.getMessage(string);
+  return chrome.i18n.getMessage(string);
 }

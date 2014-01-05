@@ -8,6 +8,7 @@ function Bookmark (chromeBookmark) {
 }
 
 Bookmark.prototype.addLocation =  function(newLocation){
+  if(newLocation === "" || newLocation === null) {return;}
   for(i=0; i < this.locations.length; i++){
     if (newLocation == this.locations[i]) {
       return;

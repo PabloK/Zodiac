@@ -1,16 +1,15 @@
 function BookmarkCtrl($scope, $timeout) {
-  // localization  
-  localize($scope,"ClearSelection");
-  localize($scope,"BookmarkSettings");
-  localize($scope,"Locations");
-  localize($scope,"CurrentLocation");
-  localize($scope,"NewLocation");
-  localize($scope,"Search");
-  
-  
+
+  //Localize
+  $scope.lz = function(string){
+    return localize(string);
+  }
   //Initialize
   $scope.locations = [];
   chrome.storage.sync.get("locations", function(data) {
+    if(data == null || data.locations == null) {
+      data = [];
+    };
     if (typeof(data) != 'undefined' && typeof(data.locations) != 'undefined'){
       $scope.locations = data.locations;
       $scope.$digest();
@@ -18,6 +17,7 @@ function BookmarkCtrl($scope, $timeout) {
   });
   $scope.locationToAdd = null;
   $scope.searhText = "";
+  $scope.newLocation = "";
   
   // find bookmarks
   chrome.bookmarks.getTree(function(data){
@@ -38,6 +38,8 @@ function BookmarkCtrl($scope, $timeout) {
       $scope.bookmarks[i].selected = false;
     }
   };
+
+  // Add selected location to selected bookmarks
   $scope.addLocationToSelected = function() {
     if (typeof($scope.locationToAdd) == 'undefined') { return; }
     if (typeof($scope.bookmarks) == 'undefined') { return; }
@@ -49,23 +51,7 @@ function BookmarkCtrl($scope, $timeout) {
     }
   };
   
-  $scope.addLocation = function(){
-    if (typeof($scope.newLocation.length) == 'undefined') {return;}
-    if ($scope.newLocation.length <= 0) {return;}
-    $scope.locations.push($scope.newLocation);
-    
-    // TODO get sync scope, add new keys, save new
-    
-    chrome.storage.sync.set({"locations": $scope.locations},function(){console.log($scope.locations)});
-  };
-  
-  $scope.removeLabel = function(bookmark,index) {
-    bookmark.locations.splice(index,1);
-  };
-  
-  $scope.removeSearchText = function(e) {
-    $scope.searchText = "";
-  };
+  // Remove selected location from selected bookmarks
   $scope.removeLocationFromSelected = function(){
     if (typeof($scope.locationToAdd) == 'undefined') { return; }
     if (typeof($scope.bookmarks) == 'undefined') { return; }
@@ -76,6 +62,35 @@ function BookmarkCtrl($scope, $timeout) {
       }
     }
   };
+  
+  // Remove a Location from a single bookmark
+  $scope.removeLocationFromBookmark = function(bookmark,index) {
+    bookmark.locations.splice(index,1);
+  };
+  
+  // Add a new location
+  $scope.addLocation = function(){
+      
+    // TODO refactor to location service
+    if (typeof($scope.newLocation.length) == 'undefined') {return;}
+    if ($scope.newLocation.length <= 0) {return;}
+    $scope.locations.push($scope.newLocation);
+    
+    // TODO get sync scope, add new keys, save new
+    chrome.storage.sync.set({"locations": $scope.locations},function(){console.log($scope.locations)});
+    $scope.newLocation = "";
+  };
+    
+  // Clears the search text field
+  $scope.removeSearchText = function(e) {
+    $scope.searchText = "";
+  };
+
+  // Clear location field
+  $scope.clearLocation = function(){
+    $scope.newLocation = "";
+  };
+  
 };
 
 var bookmarkList = []

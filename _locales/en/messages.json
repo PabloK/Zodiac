@@ -9,27 +9,54 @@
   },
   "Locations": {
     "message":"Locations",
-    "description":"The currently used locations where bookmarks can be used"
+    "description":"Location control title"
   },
   "BookmarkSettings": {
     "message":"Bookmarks locations settings",
-    "description":"Bookmarks to lable with locations"
+    "description":"Bookmarks title"
   },
-  "ClearSelection": {
-    "message":"Clear selection",
-    "description":"Clear selection"
+  "Save": {
+    "message":"Save",
+    "description":"Save changes button"
   },
-  "CurrentLocation": {
-    "message":"Current location",
-    "description":"Currently selected location for this browser"
+  "SaveTip": {
+    "message":"Save bookmark changes",
+    "description":"Save changes tool tip"
   },
   "NewLocation": {
     "message":"New location",
-    "description":"Location to be created"
+    "description":"Location string placeholder"
   },
   "Search": {
     "message":"Search",
     "description":"Search string placeholder"
+  },
+  "ClearSearchStringTip": {
+    "message":"Clear the search field",
+    "description":"Tool tip for search field clear button"
+  },
+  "ClearSelectionTip": {
+    "message":"Unselected all bookmarks",
+    "description":"Tool tip for bookmark clear button"
+  },
+  "RemoveSelectedLocationTip": {
+    "message":"Remove location from selection",
+    "description":"Tool tip for bookmark remove location button"
+  },
+  "AddLocationTip": {
+    "message":"Add location to selection",
+    "description":"Tool tip for bookmark add location button"
+  },  
+  "AddNewLocationTip": {
+    "message":"Create a new location label",
+    "description":"Tool tip for bookmark add location button"
+  },
+  "setCurrentLocationTip": {
+    "message":"Click to set current location",
+    "description":"Location labels in the header tool tip"
+  },
+  "RemoveLocationTip": {
+    "message":"Click to remove location",
+    "description":"Click to remove the location"
   }
-  
 }
