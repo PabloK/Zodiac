@@ -119,6 +119,7 @@ LocationList.prototype.removeLocation = function(locationToRemove){
 function BookmarkList(updateFunction) {
   this.updateFunction = updateFunction;
   this.bookmarks = [];
+  this.templist = [];
   this.blocked = false;
   this.getBookmarks();
 };
@@ -155,7 +156,6 @@ BookmarkList.prototype.getBookmarks = function() {
 
 // Parse bookmark tree into list of bookmarks removing folders
 BookmarkList.prototype.bookmarkTreeToListOfBookmarks = function (node) {
-  this.templist = [];
   for (key in node.children) {  
     var child = node.children[key];
     if (typeof(child.url) == 'undefined') {
@@ -165,4 +165,15 @@ BookmarkList.prototype.bookmarkTreeToListOfBookmarks = function (node) {
     }
   }
   return this.templist;
+};
+
+// Save all
+BookmarkList.prototype.save =  function(){
+   if (this.blocked) {alert(localize('ActionInProgress')); return;} else { this.blocked = true;  }
+  // TODO create book mark sync object from this.bookmarks
+  var self = this;
+  chrome.stroage.sync.set({bookmarks: sync},function(){
+    self.blocked == false;
+    self.updateFunction();
+  });
 };

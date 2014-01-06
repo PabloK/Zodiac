@@ -1,24 +1,27 @@
-
 var storage;
 beforeEach(function () {
 storage = {
-            locations:[],
-            bookmarks:{"2" :{
+            locations: JSON.stringify([]),
+            bookmarks: JSON.stringify({"2" :{
                         locations:["Home","Work"], 
                         previousparentid: "1"
-                      }}
+                      }})
           };
 });
 
-
+var chrome; 
 chrome = {
   storage: {
     sync: {
-      get : function(location,callback){obj = {}; obj[location] = storage[location]; callback(obj);},
-      set : function(data,callback){ 
-        
+      get : function(location,callback){
+        obj = {}; 
+        obj[location] = JSON.parse(storage[location]);
+        callback(obj);
+      },
+      set : function(data,callback){   
         for (key in data) {
-          storage[key] = data[key];   
+          var temp = JSON.stringify(data[key])
+          storage[key] = temp;   
         }
         if(typeof(callback) === 'function'){ callback(); }
       }

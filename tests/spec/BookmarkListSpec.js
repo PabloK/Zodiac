@@ -25,5 +25,46 @@ describe("BookmarkList", function() {
       done();
     });
   });
+  describe("Save",function() {
+    var blist;  
+    
+    beforeEach(function(done) {
+      blist = new BookmarkList(function(){return;});  
+      setTimeout(function(){
+        blist.bookmarks[0].addLocation("Test");
+      },25);
+      setTimeout(function(){
+        blist.save();
+      },50);
+      setTimeout(function(){
+        done();
+      },75);
+    });
+
+    it("it should save chnages made to bookmarks when save is called", function(done) {
+      var temp = JSON.parse(storage.bookmarks)
+      expect(temp[2].locations.length).toBe(3);
+      done();
+    });
+  });
   
+  describe("Save",function() {
+    var blist;  
+    
+    beforeEach(function(done) {
+      blist = new BookmarkList(function(){return;});  
+      setTimeout(function(){
+        blist.bookmarks[0].addLocation("Test");
+      },25);
+      setTimeout(function(){
+        done();
+      },50);
+    });
+
+    it("it should not save chnages made to bookmarks when save is not called", function(done) {
+      var temp = JSON.parse(storage.bookmarks)
+      expect(temp[2].locations.length).toBe(2);
+      done();
+    });
+  });
 });
