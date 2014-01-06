@@ -8,17 +8,12 @@ function BookmarkCtrl($scope, $timeout) {
   $(".locationTooltip").tooltip({container:'body',placement: 'bottom',title: $scope.lz('Locations')});
   
   //Initialize
-  $scope.locations = new LocationList(function(){ return; });
+  $scope.currentLocation = null;
+  $scope.filteredBookmarks = null;
+  $scope.selectedLocation = null;
   $scope.searhText = "";
   $scope.newLocation = "";
-  $scope.currentLocation = null;
-  chrome.storage.local.get('currentlocation', function(data){
-    $scope.currentLocation = data.currentlocation;
-    $scope.$digest();
-  });
-  $scope.selectedLocation = null;
   
-  // find bookmarks
   chrome.bookmarks.getTree(function(data){
     var tempBookmarks = bookmarkTreeToListOfBookmarks(data[0]);
     $scope.bookmarks  = []
@@ -30,6 +25,15 @@ function BookmarkCtrl($scope, $timeout) {
     $scope.$digest();
   });
   
+  chrome.storage.local.get('currentlocation', function(data){
+    $scope.currentLocation = data.currentlocation;
+    $scope.$digest();
+  });
+  
+  $scope.locations = new LocationList(function(){ return; });
+  
+  
+  // Clear selected items
   $scope.clearSelections = function(bookmark,index) {
     if (typeof($scope.bookmarks) == 'undefined') { return; }
     
@@ -48,6 +52,16 @@ function BookmarkCtrl($scope, $timeout) {
         $scope.bookmarks[i].addLocation($scope.selectedLocation)
       }
     }
+  };
+  
+  // Clears the search text field
+  $scope.removeSearchText = function(e) {
+    $scope.searchText = "";
+  };
+
+  // Clear location field
+  $scope.clearLocation = function(){
+    $scope.newLocation = "";
   };
   
   // Remove selected location from selected bookmarks
@@ -69,27 +83,30 @@ function BookmarkCtrl($scope, $timeout) {
   
   // Add a new location
   $scope.addLocation = function(){
+    //TODO add a wait spinner
     $scope.locations.addLocation($scope.newLocation);
     $scope.newLocation = "";
   };
   
+  // Remove a location from sync storage
   $scope.removeLocation = function(name){
+    //TODO add a wait spinner
     $scope.locations.removeLocation(name);
   };
   
+  // Set the current location in local storage
   $scope.setCurrentLocation = function(name){
     $scope.currentLocation = name;
     chrome.storage.local.set({currentlocation : $scope.currentLocation});
   };
-    
-  // Clears the search text field
-  $scope.removeSearchText = function(e) {
-    $scope.searchText = "";
-  };
-
-  // Clear location field
-  $scope.clearLocation = function(){
-    $scope.newLocation = "";
+  
+  // Select all filterd items
+  $scope.selectFilteredBookmarks= function(){
+    console.log($scope.filteredBookmarks);
+    if (typeof($scope.filteredBookmarks.length) === 'undefined'){return;};
+    for(i=0; i < $scope.filteredBookmarks.length;i++){
+      $scope.filteredBookmarks[i].selected = !$scope.filteredBookmarks[i].selected;
+    }
   };
   
 };

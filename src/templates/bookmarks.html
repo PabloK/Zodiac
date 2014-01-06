@@ -76,7 +76,7 @@
 
     <span class="pull-right col-md-4">
       <div class="input-group">
-        <input ui-keydown="{esc: 'removeSearchText()'}" type="text" placeholder="{{lz('Search')}}" ng-model="searchText" class="form-control" />
+        <input ui-keydown="{esc: 'removeSearchText()', enter: 'selectFilteredBookmarks()'}" type="text" placeholder="{{lz('Search')}}" ng-model="searchText" class="form-control" />
         <span class=" check-element input-group-btn">
           <button 
                   tooltip-placement="bottom" 
@@ -130,7 +130,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="list-group">
-      <div ng-repeat="bookmark in bookmarks | filter: searchText">
+      <div ng-repeat="bookmark in filteredBookmarks =  (bookmarks | filter: searchText)">
         <li ng-class="{active : bookmark.selected}" class="list-group-item" >
           <label>
             <input ng-model="bookmark.selected" type="checkbox"/>
