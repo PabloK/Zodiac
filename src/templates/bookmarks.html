@@ -115,14 +115,12 @@
             <span class="glyphicon-remove glyphicon"></span>&nbsp;
           </button>
       </span>  
-      <select class="form-control" 
-              tooltip-placement="bottom" 
-              tooltip="{{lz('Locations')}}" 
-              tooltip-append-to-body="true"
-              ng-model="locationToAdd" 
+      <select class="form-control locationTooltip"
+              ng-model="selectedLocation"
+              name="SelectedLocation"
               ng-options="location for location in locations.locations">
-        <option value="test"></option>
       </select>
+      
       </div>
     </span>
     

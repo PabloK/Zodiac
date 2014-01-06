@@ -55,6 +55,7 @@ LocationList.prototype.addLocation =  function(newLocation){
     if(newLocation === "" || newLocation === null) {return;}
     for(i=0; i < self.locations.length; i++){
       if (newLocation == self.locations[i]) {
+        self.blocked = false;
         return;
       }
     }

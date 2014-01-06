@@ -4,9 +4,11 @@ function BookmarkCtrl($scope, $timeout) {
   $scope.lz = function(string){
     return localize(string);
   }
+  // Handeled separatley because tooltip and ng-model compete for scope destroying model  
+  $(".locationTooltip").tooltip({container:'body',placement: 'bottom',title: $scope.lz('Locations')});
+  
   //Initialize
   $scope.locations = new LocationList(function(){ return; });
-  $scope.locationToAdd = null;
   $scope.searhText = "";
   $scope.newLocation = "";
   $scope.currentLocation = null;
@@ -14,6 +16,7 @@ function BookmarkCtrl($scope, $timeout) {
     $scope.currentLocation = data.currentlocation;
     $scope.$digest();
   });
+  $scope.selectedLocation = null;
   
   // find bookmarks
   chrome.bookmarks.getTree(function(data){
@@ -37,24 +40,24 @@ function BookmarkCtrl($scope, $timeout) {
 
   // Add selected location to selected bookmarks
   $scope.addLocationToSelected = function() {
-    if (typeof($scope.locationToAdd) == 'undefined') { return; }
+    if (typeof($scope.selectedLocation) == 'undefined') { return; }
     if (typeof($scope.bookmarks) == 'undefined') { return; }
         
     for(var i=0; i < $scope.bookmarks.length; i++) {
       if ($scope.bookmarks[i].selected) {
-        $scope.bookmarks[i].addLocation($scope.locationToAdd)
+        $scope.bookmarks[i].addLocation($scope.selectedLocation)
       }
     }
   };
   
   // Remove selected location from selected bookmarks
   $scope.removeLocationFromSelected = function(){
-    if (typeof($scope.locationToAdd) == 'undefined') { return; }
+    if (typeof($scope.selectedLocation) == 'undefined') { return; }
     if (typeof($scope.bookmarks) == 'undefined') { return; }
         
     for(var i=0; i < $scope.bookmarks.length; i++) {
       if ($scope.bookmarks[i].selected) {
-        $scope.bookmarks[i].removeLocation($scope.locationToAdd)
+        $scope.bookmarks[i].removeLocation($scope.selectedLocation)
       }
     }
   };
