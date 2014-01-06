@@ -132,7 +132,9 @@
   <div class="col-md-12">
     <div class="list-group">
       <div ng-repeat="bookmark in filteredBookmarks =  (bookmarks | filter: searchText)">
-        <li ng-class="{active : bookmark.selected}" class="list-group-item" >
+        <li 
+            ng-class="{active : bookmark.selected, bokmarkbar: bookmark.parent != 1}" 
+            class="list-group-item" >
           <label>
             <input ng-model="bookmark.selected" type="checkbox"/>
             <span ng-bind="bookmark.title | trunc: 50 "></span>
