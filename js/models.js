@@ -4,11 +4,19 @@ function Bookmark (chromeBookmark) {
   this.url = chromeBookmark.url;
   this.selected = false;
   this.parent = chromeBookmark.parentId;
+  this.previousparentid = null;
   this.locations = [];
 }
 // for identification
 Bookmark.prototype.toString = function() { return "Bookmark"};
 
+// Apply sync data
+Bookmark.prototype.addSyncData =  function(syncData){
+  this.locations = syncData.locations;
+  this.previousparentid = this.previousparentid;
+};
+
+// Add A location to a Bookmark object
 Bookmark.prototype.addLocation =  function(newLocation){
   if(newLocation === "" || newLocation === null) {return;}
   for(i=0; i < this.locations.length; i++){
@@ -30,17 +38,6 @@ Bookmark.prototype.removeLocation = function(locationToRemove){
   }
 };
 
-Bookmark.prototype.save = function(){
-  return;
-};
-
-Bookmark.prototype.load = function(){
-  return;
-};
-
-Bookmark.prototype.update = function(){
-  return;
-};
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function LocationList(updateFunction) {
@@ -75,7 +72,6 @@ LocationList.prototype.addLocation =  function(newLocation){
 LocationList.prototype.getLocations = function(callback) {
   var self = this;
   chrome.storage.sync.get("locations", function(data) {
-    console.log(data);
     if (self.blocked) {alert(localize('ActionInProgress')); return;} else { self.blocked = true;  }
     if(data == null || !$.isArray(data.locations) || typeof(data.locations) === 'undefined') {
       data = {};
@@ -143,6 +139,14 @@ BookmarkList.prototype.getBookmarks = function() {
       }
       
       chrome.storage.sync.get('bookmarks',function(data){
+        if(data == null || !$.isPlainObject(data.bookmarks) || typeof(data.bookmarks) === 'undefined') {
+          data = {};
+          data.bookmarks = {};
+        }
+        for (i=0;i < self.bookmarks.length; i++){
+          var tempSync = data.bookmarks[self.bookmarks[i].id]
+          self.bookmarks[i].addSyncData(tempSync); 
+        }
         self.updateFunction();
         self.blocked = false;
       });

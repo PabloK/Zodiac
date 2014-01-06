@@ -3,11 +3,10 @@ var storage;
 beforeEach(function () {
 storage = {
             locations:[],
-            bookmarks:[{
-                        id: "2", 
+            bookmarks:{"2" :{
                         locations:["Home","Work"], 
                         previousparentid: "1"
-                      }]
+                      }}
           };
 });
 
