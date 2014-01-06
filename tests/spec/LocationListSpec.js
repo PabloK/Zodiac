@@ -1,4 +1,4 @@
-describe("Bookmark", function() {
+describe("LocationList", function() {
 
   describe("Add",function() {
     var list;  
@@ -21,6 +21,7 @@ describe("Bookmark", function() {
     var list;  
     
     beforeEach(function(done) {
+      console.log("remove");
       list = new LocationList(function(){return;});  
       list.addLocation('Home');  
       setTimeout(function() {
@@ -43,6 +44,7 @@ describe("Bookmark", function() {
     var list;  
     
     beforeEach(function(done) {
+      console.log("Add many");
       list = new LocationList(function(){return;});  
       list.addLocation('Home');  
       setTimeout(function() {
@@ -65,6 +67,7 @@ describe("Bookmark", function() {
     var list;  
     
     beforeEach(function(done) {
+      console.log("Add once");
       list = new LocationList(function(){return;});  
       list.addLocation('Home');  
       setTimeout(function() {

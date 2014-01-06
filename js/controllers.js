@@ -13,17 +13,7 @@ function BookmarkCtrl($scope, $timeout) {
   $scope.selectedLocation = null;
   $scope.searhText = "";
   $scope.newLocation = "";
-  
-  chrome.bookmarks.getTree(function(data){
-    var tempBookmarks = bookmarkTreeToListOfBookmarks(data[0]);
-    $scope.bookmarks  = []
-    for(i = 0;i < tempBookmarks.length; i++) {
-      var temp = new Bookmark(tempBookmarks[i]);
-      $scope.bookmarks.push(temp); 
-    }
-    
-    $scope.$digest();
-  });
+  $scope.bookmarks = new BookmarkList(function(){$scope.$digest}).bookmarks;
   
   chrome.storage.local.get('currentlocation', function(data){
     $scope.currentLocation = data.currentlocation;
@@ -109,17 +99,4 @@ function BookmarkCtrl($scope, $timeout) {
     }
   };
   
-};
-
-var bookmarkList = []
-function bookmarkTreeToListOfBookmarks(node) {
-  for (key in node.children) {  
-    var child = node.children[key];
-    if (typeof(child.url) == 'undefined') {
-      bookmarkList.concat(bookmarkTreeToListOfBookmarks(child));
-    } else {
-      bookmarkList.push(child);
-    }
-  }
-  return bookmarkList;
 };

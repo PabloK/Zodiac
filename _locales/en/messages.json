@@ -62,5 +62,9 @@
   "SyncWarning": {
     "message":"Preventing continued action because sync could not complete.",
     "description":"Shown when sync could not complete"
+  },
+  "ActionInProgress": {
+    "message":"Preventing continued action because an action is already taking place.",
+    "description":"Shown when an action is started and is blocked by a previous action."
   }
 }
