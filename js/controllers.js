@@ -13,7 +13,7 @@ function BookmarkCtrl($scope, $timeout) {
   $scope.selectedLocation = null;
   $scope.searhText = "";
   $scope.newLocation = "";
-  $scope.bookmarks = new BookmarkList(function(){$scope.$digest}).bookmarks;
+  $scope.bl = new BookmarkList(function(){ $scope.$digest(); });
   
   chrome.storage.local.get('currentlocation', function(data){
     $scope.currentLocation = data.currentlocation;
@@ -25,21 +25,26 @@ function BookmarkCtrl($scope, $timeout) {
   
   // Clear selected items
   $scope.clearSelections = function(bookmark,index) {
-    if (typeof($scope.bookmarks) == 'undefined') { return; }
+    if (typeof($scope.bl.bookmarks) == 'undefined') { return; }
     
     for(var i=0; i < $scope.bookmarks.length; i++) {
-      $scope.bookmarks[i].selected = false;
+      $scope.bl.bookmarks[i].selected = false;
     }
   };
+  
+  // Save changes made to bookmarks
+  $scope.saveBookmarks = function(){
+    this.bl.save(); 
+  }
 
   // Add selected location to selected bookmarks
   $scope.addLocationToSelected = function() {
     if (typeof($scope.selectedLocation) == 'undefined') { return; }
-    if (typeof($scope.bookmarks) == 'undefined') { return; }
+    if (typeof($scope.bl.bookmarks) == 'undefined') { return; }
         
-    for(var i=0; i < $scope.bookmarks.length; i++) {
-      if ($scope.bookmarks[i].selected) {
-        $scope.bookmarks[i].addLocation($scope.selectedLocation)
+    for(var i=0; i < $scope.bl.bookmarks.length; i++) {
+      if ($scope.bl.bookmarks[i].selected) {
+        $scope.bl.bookmarks[i].addLocation($scope.selectedLocation)
       }
     }
   };
@@ -57,11 +62,11 @@ function BookmarkCtrl($scope, $timeout) {
   // Remove selected location from selected bookmarks
   $scope.removeLocationFromSelected = function(){
     if (typeof($scope.selectedLocation) == 'undefined') { return; }
-    if (typeof($scope.bookmarks) == 'undefined') { return; }
+    if (typeof($scope.bl.bookmarks) == 'undefined') { return; }
         
-    for(var i=0; i < $scope.bookmarks.length; i++) {
-      if ($scope.bookmarks[i].selected) {
-        $scope.bookmarks[i].removeLocation($scope.selectedLocation)
+    for(var i=0; i < $scope.bl.bookmarks.length; i++) {
+      if ($scope.bl.bookmarks[i].selected) {
+        $scope.bl.bookmarks[i].removeLocation($scope.selectedLocation)
       }
     }
   };
@@ -92,11 +97,9 @@ function BookmarkCtrl($scope, $timeout) {
   
   // Select all filterd items
   $scope.selectFilteredBookmarks= function(){
-    console.log($scope.filteredBookmarks);
     if (typeof($scope.filteredBookmarks.length) === 'undefined'){return;};
     for(i=0; i < $scope.filteredBookmarks.length;i++){
       $scope.filteredBookmarks[i].selected = !$scope.filteredBookmarks[i].selected;
     }
   };
-  
 };

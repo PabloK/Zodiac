@@ -146,10 +146,14 @@ BookmarkList.prototype.getBookmarks = function() {
         }
         for (i=0;i < self.bookmarks.length; i++){
           var tempSync = data.bookmarks[self.bookmarks[i].id]
-          self.bookmarks[i].addSyncData(tempSync); 
+          if (typeof(tempSync) != 'undefined'){
+            self.bookmarks[i].addSyncData(tempSync); 
+          }
         }
-        self.updateFunction();
+        console.log(self);
         self.blocked = false;
+        console.log("sync");
+        self.updateFunction();
       });
     });
 };
@@ -169,11 +173,18 @@ BookmarkList.prototype.bookmarkTreeToListOfBookmarks = function (node) {
 
 // Save all
 BookmarkList.prototype.save =  function(){
-   if (this.blocked) {alert(localize('ActionInProgress')); return;} else { this.blocked = true;  }
-  // TODO create book mark sync object from this.bookmarks
+  if (this.blocked) {alert(localize('ActionInProgress')); return;} else { this.blocked = true;  }
+  var sync = {};
+  for (i=0;i < this.bookmarks.length;i++){
+    tempBookmark = this.bookmarks[i];
+    if (tempBookmark.locations.length > 0){
+      
+      sync[tempBookmark.id] = {locations: tempBookmark.locations, previousparentid: tempBookmark.parent}; 
+    }
+  }
   var self = this;
-  chrome.stroage.sync.set({bookmarks: sync},function(){
-    self.blocked == false;
+  chrome.storage.sync.set({bookmarks: sync},function(){
+    self.blocked = false;
     self.updateFunction();
   });
 };

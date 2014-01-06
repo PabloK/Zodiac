@@ -58,7 +58,7 @@
                 tooltip-placement="bottom" 
                 tooltip="{{lz('SaveTip')}}"
                 tooltip-append-to-body="true"
-                ng-click="clearSelections()" 
+                ng-click="saveBookmarks()" 
                 class="addtooltip btn btn-default" 
                 >
         &nbsp;<span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;
@@ -131,7 +131,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="list-group">
-      <div ng-repeat="bookmark in filteredBookmarks =  (bookmarks | filter: searchText)">
+      <div ng-repeat="bookmark in filteredBookmarks =  (bl.bookmarks | filter: searchText)">
         <li 
             ng-class="{active : bookmark.selected, bokmarkbar: bookmark.parent != 1}" 
             class="list-group-item" >
