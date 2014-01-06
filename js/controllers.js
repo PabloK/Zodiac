@@ -30,7 +30,7 @@ function BookmarkCtrl($scope, $timeout) {
     $scope.$digest();
   });
   
-  $scope.locations = new LocationList(function(){ return; });
+  $scope.locations = new LocationList(function(){ $scope.$digest(); });
   
   
   // Clear selected items

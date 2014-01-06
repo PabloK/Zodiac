@@ -10,4 +10,8 @@ body { padding-top: 70px;
 .fix-position { position:relative; left : 30px;}
 .extra-size { font-size: 1.25em;}
 .current-location { background-color: #428bca;}
-#imglogo{ position:relative; bottom: 2px; width: 24px; margin: 0; padding: 0;}
+#imglogo { position:relative; bottom: 2px; width: 24px; margin: 0; padding: 0;}
+#loader { margin-top:9px; margin-left: 15px;}
+.ng-hide {
+  display:none!important;
+}

@@ -26,7 +26,7 @@
   </div>
   <div class="col-md-8">
       <span ng-class="{active : currentLocation==location}" 
-            class="pointer extra-margin extra-size label pull-left label-success" 
+            class="pointer extra-margin extra-size label pull-left label-default" 
             ng-repeat="location in locations.locations">
         <span class="pointer"
               tooltip-placement="bottom"
@@ -41,6 +41,7 @@
               class="pointer glyphicon-remove glyphicon"></span> 
         
       </span>
+      <img id="loader" ng-show="locations.blocked" class="check-element animate-show" src="../../img/ajax-loader.gif">
   </div>
 </div>
 <br />

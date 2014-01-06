@@ -51,7 +51,7 @@ function LocationList(updateFunction) {
 LocationList.prototype.addLocation =  function(newLocation){
   var self = this;
   this.getLocations(function() {
-    if (self.blocked) {alert(localize('ActionInProgress')); return;} else { self.blocked = true;  }
+    if (self.blocked) {alert(localize('ActionInProgress')); return;} else { self.blocked = true; }
     if(newLocation === "" || newLocation === null) {return;}
     for(i=0; i < self.locations.length; i++){
       if (newLocation == self.locations[i]) {
@@ -88,6 +88,7 @@ LocationList.prototype.setLocations = function() {
   var self = this;
   chrome.storage.sync.set({"locations": self.locations},function(){
     self.blocked = false;
+    self.updateFunction();
   });
 };
 
