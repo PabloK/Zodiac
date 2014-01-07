@@ -12,11 +12,6 @@ InactiveFolder.prototype.get = function(){
 // Initialize
 var appId = chrome.runtime.id;
 var inactiveFolder = new InactiveFolder();
-chrome.bookmarks.MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE = 2147483647;
-chrome.bookmarks.MAX_WRITE_OPERATIONS_PER_HOUR = 2147483647;
-chrome.storage.sync.MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE = 2147483647
-chrome.storage.sync.MAX_WRITE_OPERATIONS_PER_HOUR = 2147483647
-
 
 // Helpers
 // Search array for string key
