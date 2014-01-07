@@ -1,0 +1,40 @@
+{
+  "name": "Bookmark anywhere",
+  "short_name": "BA",
+  "version": "0.0.2",
+  "manifest_version": 2,
+  "description": "Use different Bookmarks in the bookmarks bar at different locations.",
+  "homepage_url": "https://github.com/PabloK/Bookmark-anywhere",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "author" : "Pablo Karlsson",
+  "options_page" : "src/templates/options.html",
+  "default_locale": "en",
+  "background": {
+    "scripts": ["js/background.js"]
+  },
+ "minimum_chrome_version" : "20",
+ "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+            "js/vendor/jq.min.js", 
+            "js/vendor/angular.min.js",
+            "js/vendor/angular-route.min.js", 
+            "js/vendor/bootstrap.min.js",
+            "js/vendor/angular-ui.js",
+            "js/app.js",
+            "js/helpers.js",
+            "js/models.js",
+            "js/controllers.js"
+            ]
+    }
+  ],
+  "permissions": [
+    "bookmarks",
+    "storage"
+  ]
+}
