@@ -1,21 +1,30 @@
-// TODO: Load location from localstorage
-// TODO: Show/Hide bookmarks depending on location
-  //Show bookmark
-  //Hide bookmark
-
-// TODO: Handle bookmark settings
+// Models
 InactiveFolder = function(){
   this.folder = null;
-  this.set = function (folder) {
+};
+InactiveFolder.prototype.set = function (folder) {
     this.folder = folder;
   };
-  this.get = function(){
-    return this.folder;
-  };
+InactiveFolder.prototype.get = function(){
+  return this.folder;
 };
 
+// Initialize
 var appId = chrome.runtime.id;
 var inactiveFolder = new InactiveFolder();
+chrome.bookmarks.MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE = 2147483647;
+chrome.bookmarks.MAX_WRITE_OPERATIONS_PER_HOUR = 2147483647;
+chrome.storage.sync.MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE = 2147483647
+chrome.storage.sync.MAX_WRITE_OPERATIONS_PER_HOUR = 2147483647
+
+
+// Helpers
+// Search array for string key
+function hasValue (arr,value) {
+  var i;
+  for (i=0; i<arr.length; i++) { if (arr[i] === value) return true; }
+  return false;
+}
 
 // Recursively search for the first occourence of title
 function traverseFindBookmark(node, searchString) {
@@ -30,24 +39,46 @@ function traverseFindBookmark(node, searchString) {
   }
   return null;
 }
+
+// Hide and show bookmarks
+function hideShowBookmarks() {
+  console.log("Checking Bookmarks");
+  if (inactiveFolder.get() == null){
+    throw chrome.i18n.getMessage("folderCreationTimeout");
+  }
+  chrome.storage.sync.get('bookmarks',function(data){
+    var sbookmarks = data.bookmarks
+    chrome.storage.local.get('currentlocation',function(data){
+      var currentlocation = data.currentlocation;
+      for(key in sbookmarks){
+        var newLocation = key;
+        if(!hasValue(sbookmarks[key].locations,currentlocation)){
+            newLocation = inactiveFolder.folder.id;
+        }
+        if(hasValue(sbookmarks[key].locations,currentlocation)){
+            newLocation = '1';        
+        }
+        chrome.bookmarks.move(key,{parentId: newLocation});
+      }
+    });
+  });
+}
+
+// Add the inactive folder
 chrome.bookmarks.getTree(function(data){
   inactiveFolder.set(traverseFindBookmark(data[0], appId));
   if(inactiveFolder.get() == null) {
      chrome.bookmarks.create({ title : appId, parentId : "2"}, function(data) {
         inactiveFolder.set(data);
+        hideShowBookmarks(); 
      });
   }
 });
-setTimeout(hideshowBookmarks,150);
-function hideshowBookmarks() {
-  if (false) {
-  if (inactiveFolder.get() == null){
-    throw chrome.i18n.getMessage("folderCreationTimeout");
-  }
-  // Traverse Bookmarks in activefolder and move those that are labeled incorrectly
-  // Traverse Bookmarks in inactivefolder and move those that are labeled correctly
-  }
-  console.log("Checking Bookmarks");
-  setTimeout(hideshowBookmarks,10000);
-}
 
+//Handlers
+// Handle storage change
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+  if('bookmarks' in changes){
+    hideShowBookmarks(); 
+  }
+});

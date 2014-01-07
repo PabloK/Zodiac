@@ -138,6 +138,7 @@
           <label>
             <input ng-model="bookmark.selected" type="checkbox"/>
             <span ng-bind="bookmark.title | trunc: 50 "></span>
+            <span ng-bind="bookmark.id | trunc: 50 "></span>
           </label>
           <span class="extra-margin pull-right label label-success" ng-repeat="location in bookmark.locations">
             <span ng-click="removeLocationFromBookmark(bookmark,$index)" class="pointer glyphicon-remove glyphicon"></span> <span ng-bind="location"></span>

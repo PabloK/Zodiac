@@ -12,8 +12,8 @@ Bookmark.prototype.toString = function() { return "Bookmark"};
 
 // Apply sync data
 Bookmark.prototype.addSyncData =  function(syncData){
-  this.locations = syncData.locations;
-  this.previousparentid = this.previousparentid;
+  this.locations = syncData.locations;  
+  this.previousparentid = syncData.previousparentid;
 };
 
 // Add A location to a Bookmark object
@@ -150,9 +150,7 @@ BookmarkList.prototype.getBookmarks = function() {
             self.bookmarks[i].addSyncData(tempSync); 
           }
         }
-        console.log(self);
         self.blocked = false;
-        console.log("sync");
         self.updateFunction();
       });
     });
@@ -178,7 +176,6 @@ BookmarkList.prototype.save =  function(){
   for (i=0;i < this.bookmarks.length;i++){
     tempBookmark = this.bookmarks[i];
     if (tempBookmark.locations.length > 0){
-      
       sync[tempBookmark.id] = {locations: tempBookmark.locations, previousparentid: tempBookmark.parent}; 
     }
   }
