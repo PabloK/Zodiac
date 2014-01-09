@@ -1,7 +1,7 @@
 {
   "name": "Bookmark anywhere",
   "short_name": "BA",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "manifest_version": 2,
   "description": "Use different Bookmarks in the bookmarks bar at different locations.",
   "homepage_url": "https://github.com/PabloK/Bookmark-anywhere",

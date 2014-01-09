@@ -67,13 +67,15 @@ chrome.bookmarks.getTree(function(data){
         inactiveFolder.set(data);
         hideShowBookmarks(); 
      });
+    return;
   }
+  hideShowBookmarks(); 
 });
 
 //Handlers
 // Handle storage change
 chrome.storage.onChanged.addListener(function(changes, namespace) {
-  if('bookmarks' in changes){
+  if(('bookmarks' in changes) || ('locations' in changes)){
     hideShowBookmarks(); 
   }
 });
