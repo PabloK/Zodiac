@@ -39,6 +39,7 @@ function traverseFindBookmark(node, searchString) {
 function hideShowBookmarks() {
   console.log("Checking Bookmarks");
   if (inactiveFolder.get() == null){
+    alert(chrome.i18n.getMessage("folderCreationTimeout"));
     throw chrome.i18n.getMessage("folderCreationTimeout");
   }
   chrome.storage.sync.get('bookmarks',function(data){
@@ -75,7 +76,7 @@ chrome.bookmarks.getTree(function(data){
 //Handlers
 // Handle storage change
 chrome.storage.onChanged.addListener(function(changes, namespace) {
-  if(('bookmarks' in changes) || ('locations' in changes)){
+  if(('bookmarks' in changes) || ('locations' in changes) || ('currentlocation' in changes)){
     hideShowBookmarks(); 
   }
 });

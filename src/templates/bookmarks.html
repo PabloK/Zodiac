@@ -61,8 +61,9 @@
                 ng-click="saveBookmarks()" 
                 class="addtooltip btn btn-default" 
                 >
-        &nbsp;<span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;
+        <span ng-bind="lz('Save')"></span>
         </button>
+        <!--
         <button 
                 tooltip-placement="bottom" 
                 tooltip="{{lz('ClearSelectionTip')}}" 
@@ -72,6 +73,7 @@
                 >
           &nbsp;<span class="glyphicon glyphicon-unchecked"></span>&nbsp;
         </button>
+        -->
       </div>
     </span>  
 
@@ -138,7 +140,6 @@
           <label>
             <input ng-model="bookmark.selected" type="checkbox"/>
             <span ng-bind="bookmark.title | trunc: 50 "></span>
-            <span ng-bind="bookmark.id | trunc: 50 "></span>
           </label>
           <span class="extra-margin pull-right label label-success" ng-repeat="location in bookmark.locations">
             <span ng-click="removeLocationFromBookmark(bookmark,$index)" class="pointer glyphicon-remove glyphicon"></span> <span ng-bind="location"></span>
