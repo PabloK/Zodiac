@@ -15,4 +15,4 @@ Have you tired of having your work bookmarks filling chrome's bookmark bar at ho
 * Markup bookmarks that should only show up in specific locations
 * Save your settings to the cloud
 
-This software is provided as is. The author of this extension can not be accountable for any harm caused by the useage of this software.
+This software is provided as is. The author of this extension can not be held liable for any harm caused by the useage of this software.
