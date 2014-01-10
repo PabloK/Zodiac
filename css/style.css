@@ -1,5 +1,5 @@
-body { padding-top: 70px; 
-       overflow-y: scroll}
+body { padding-top: 70px; overflow-y: scroll; min-width: 500px; min-height: 800px;}
+.row { min-width: 500px; }
 .bokmarkbar { background-color: #EEE;}
 .navbar-brand { font-size: 1.5em; }
 .navbar-color { background-color: #333; }

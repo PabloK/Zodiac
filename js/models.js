@@ -4,6 +4,7 @@ function Bookmark (chromeBookmark) {
   this.url = chromeBookmark.url;
   this.selected = false;
   this.parent = chromeBookmark.parentId;
+  this.dateAdded = chromeBookmark.dateAdded;
   this.previousparentid = null;
   this.locations = [];
 }

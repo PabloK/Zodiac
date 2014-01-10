@@ -23,6 +23,7 @@
           </span>&nbsp;</button>
       </span>
     </div>
+    <br />
   </div>
   <div class="col-md-8">
       <span ng-class="{active : currentLocation==location}" 
@@ -52,97 +53,99 @@
 </div>
 
 <div class="row well header">
-    <span class="col-md-4">
-      <div class="input-group">
-        <button 
-                tooltip-placement="bottom" 
-                tooltip="{{lz('SaveTip')}}"
-                tooltip-append-to-body="true"
-                ng-click="saveBookmarks()" 
-                class="addtooltip btn btn-default" 
-                >
-        <span ng-bind="lz('Save')"></span>
-        </button>
-        <!--
-        <button 
-                tooltip-placement="bottom" 
-                tooltip="{{lz('ClearSelectionTip')}}" 
-                tooltip-append-to-body="true"
-                ng-click="clearSelections()" 
-                class="addtooltip btn btn-default" 
-                >
-          &nbsp;<span class="glyphicon glyphicon-unchecked"></span>&nbsp;
-        </button>
-        -->
-      </div>
-    </span>  
+  <span class="col-md-4">
+    <div class="input-group">
+      <button 
+              tooltip-placement="right" 
+              tooltip="{{lz('SaveTip')}}"
+              tooltip-append-to-body="true"
+              ng-click="saveBookmarks()" 
+              class="addtooltip btn btn-default" 
+              >
+      <span ng-bind="lz('Save')"></span>
+      </button>
+      <!--
+      <button 
+              tooltip-placement="bottom" 
+              tooltip="{{lz('ClearSelectionTip')}}" 
+              tooltip-append-to-body="true"
+              ng-click="clearSelections()" 
+              class="addtooltip btn btn-default" 
+              >
+        &nbsp;<span class="glyphicon glyphicon-unchecked"></span>&nbsp;
+      </button>
+      -->
+    </div>
+  </span>  
 
-    <span class="pull-right col-md-4">
-      <div class="input-group">
-        <input ui-keydown="{esc: 'removeSearchText()', enter: 'selectFilteredBookmarks()'}" type="text" placeholder="{{lz('Search')}}" ng-model="searchText" class="form-control" />
-        <span class=" check-element input-group-btn">
-          <button 
-                  tooltip-placement="bottom" 
-                  tooltip="{{lz('ClearSearchStringTip')}}" 
-                  tooltip-append-to-body="true"
-                  ng-click="removeSearchText()" 
-                  class="addtooltip btn btn-default " 
-                  type="button">
-            &nbsp;
-            <span class="glyphicon-remove glyphicon"></span>
-            &nbsp;
-          </button>        
-        </span>  
-      </div>
-    </span>
-       
-    <span class="pull-right col-md-4">
-      <div class="input-group">
-      <span class="input-group-btn">
-          <button 
-                  tooltip-placement="bottom" 
-                  tooltip-append-to-body="true"
-                  tooltip="{{lz('AddLocationTip')}}" 
-                  ng-click="addLocationToSelected()" 
-                  class="btn btn-default " 
-                  type="button">
-            <span class="glyphicon-plus glyphicon"></span>&nbsp;
-          </button>
-          <button 
-                  tooltip-placement="bottom" 
-                  tooltip-append-to-body="true"
-                  tooltip="{{lz('RemoveSelectedLocationTip')}}" 
-                  ng-click="removeLocationFromSelected()" 
-                  class="btn btn-default " 
-                  type="button">
-            <span class="glyphicon-remove glyphicon"></span>&nbsp;
-          </button>
+  <span class="col-md-4">
+    <div class="input-group">
+      <input ui-keydown="{esc: 'removeSearchText()', enter: 'selectFilteredBookmarks()'}" type="text" placeholder="{{lz('Search')}}" ng-model="searchText" class="form-control" />
+      <span class=" check-element input-group-btn">
+        <button 
+                tooltip-placement="bottom" 
+                tooltip="{{lz('ClearSearchStringTip')}}" 
+                tooltip-append-to-body="true"
+                ng-click="removeSearchText()" 
+                class="addtooltip btn btn-default " 
+                type="button">
+          &nbsp;
+          <span class="glyphicon-remove glyphicon"></span>
+          &nbsp;
+        </button>        
       </span>  
-      <select class="form-control locationTooltip"
-              ng-model="selectedLocation"
-              name="SelectedLocation"
-              ng-options="location for location in locations.locations">
-      </select>
-      
-      </div>
-    </span>
+    </div>
+  </span>
+     
+  <span class="col-md-4">
+    <div class="input-group">
+    <span class="input-group-btn">
+        <button 
+                tooltip-placement="right" 
+                tooltip-append-to-body="true"
+                tooltip="{{lz('AddLocationTip')}}" 
+                ng-click="addLocationToSelected()" 
+                class="btn btn-default " 
+                type="button">
+          <span class="glyphicon-plus glyphicon"></span>&nbsp;
+        </button>
+        <button 
+                tooltip-placement="right" 
+                tooltip-append-to-body="true"
+                tooltip="{{lz('RemoveSelectedLocationTip')}}" 
+                ng-click="removeLocationFromSelected()" 
+                class="btn btn-default " 
+                type="button">
+          <span class="glyphicon-remove glyphicon"></span>&nbsp;
+        </button>
+    </span>  
+    <select class="form-control locationTooltip"
+            ng-model="selectedLocation"
+            name="SelectedLocation"
+            ng-options="location for location in locations.locations">
+    </select>
     
-  </div>
+    </div>
+  </span>
+  
 </div>
 
 <div class="row">
   <div class="col-md-12">
     <div class="list-group">
-      <div ng-repeat="bookmark in filteredBookmarks =  (bl.bookmarks | filter: searchText)">
+      <div ng-repeat="bookmark in filteredBookmarks =  (bl.bookmarks | orderBy:'parent' | filter: searchText)">
         <li 
             ng-class="{active : bookmark.selected, bokmarkbar: bookmark.parent != 1}" 
             class="list-group-item" >
           <label>
             <input ng-model="bookmark.selected" type="checkbox"/>
-            <span ng-bind="bookmark.title | trunc: 50 "></span>
+            <span ng-bind="bookmark.title | trunc: 50"></span>
           </label>
           <span class="extra-margin pull-right label label-success" ng-repeat="location in bookmark.locations">
             <span ng-click="removeLocationFromBookmark(bookmark,$index)" class="pointer glyphicon-remove glyphicon"></span> <span ng-bind="location"></span>
+          </span>
+          <span class="extra-margin pull-right label">
+            <span></span>
           </span>
         </li> 
       </div>
