@@ -1,70 +1,10 @@
 {
-  "extName": {
-    "message":"Bookmark anywhere"
-    ,"description":"The name of the extension."
+  "exTile": {
+    "message":"Zodiac"
+    ,"description":"The extension name displayed in titels and texts."
   },
-  "folderCreationTimeout": {
-    "message":"Kunde inte skapa mapp för gömda filer i tid",
-    "description":"The error message delivered when no inactive bookmark folder could be created"
-  },
-  "Locations": {
-    "message":"Platser",
-    "description":"Location control title"
-  },
-  "BookmarkSettings": {
-    "message":"Bokmärken plats inställningar",
-    "description":"Bookmarks title"
-  },
-  "Save": {
-    "message":"Spara",
-    "description":"Save changes button"
-  },
-  "SaveTip": {
-    "message":"Spara bokmärkes ändringar",
-    "description":"Save changes tool tip"
-  },
-  "NewLocation": {
-    "message":"Ny plats",
-    "description":"Location string placeholder"
-  },
-  "Search": {
-    "message":"Sök",
-    "description":"Search string placeholder"
-  },
-  "ClearSearchStringTip": {
-    "message":"Töm sökfältet",
-    "description":"Tool tip for search field clear button"
-  },
-  "ClearSelectionTip": {
-    "message":"Avmarkera bokmärken",
-    "description":"Tool tip for bookmark clear button"
-  },
-  "RemoveSelectedLocationTip": {
-    "message":"Tabort plats från bokmärke",
-    "description":"Tool tip for bookmark remove location button"
-  },
-  "AddLocationTip": {
-    "message":"Lägg till plats till markerade bokmärken",
-    "description":"Tool tip for bookmark add location button"
-  },  
-  "AddNewLocationTip": {
-    "message":"Skapa en ny plats",
-    "description":"Tool tip for bookmark add location button"
-  },
-  "setCurrentLocationTip": {
-    "message":"Klicka för att välja som nuvarande plats",
-    "description":"Location labels in the header tool tip"
-  },
-  "RemoveLocationTip": {
-    "message":"Klicka för tabort platsen",
-    "description":"Click to remove the location"
-  },
-  "SyncWarning": {
-    "message":"Ändringen kunde inte genomföras för att en annan ändring håller på att sparas",
-    "description":"Shown when sync could not complete"
-  },
-  "ActionInProgress": {
-    "message":"Ändringen kunde inte genomföras för att en annan ändring håller på att sparas",
-    "description":"Shown when an action is started and is blocked by a previous action."
-  }
+  "exSubTitle": {
+    "message":"Tidsrapportering"
+    ,"description":"The extension subtitle displayed following after the exTitel in some titels and texts."
+  }  
 }

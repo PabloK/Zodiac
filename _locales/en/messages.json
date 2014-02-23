@@ -1,70 +1,10 @@
 {
-  "extName": {
-    "message":"Bookmark anywhere"
-    ,"description":"The name of the extension."
+  "exTitle": {
+    "message":"Zodiac"
+    ,"description":"The extension name displayed in titels and texts."
   },
-  "folderCreationTimeout": {
-    "message":"Could not create inactive folder on time",
-    "description":"The error message delivered when no inactive bookmark folder could be created"
-  },
-  "Locations": {
-    "message":"Locations",
-    "description":"Location control title"
-  },
-  "BookmarkSettings": {
-    "message":"Bookmarks locations settings",
-    "description":"Bookmarks title"
-  },
-  "Save": {
-    "message":"Save",
-    "description":"Save changes button"
-  },
-  "SaveTip": {
-    "message":"Save bookmark changes",
-    "description":"Save changes tool tip"
-  },
-  "NewLocation": {
-    "message":"New location",
-    "description":"Location string placeholder"
-  },
-  "Search": {
-    "message":"Search",
-    "description":"Search string placeholder"
-  },
-  "ClearSearchStringTip": {
-    "message":"Clear the search field",
-    "description":"Tool tip for search field clear button"
-  },
-  "ClearSelectionTip": {
-    "message":"Unselected all bookmarks",
-    "description":"Tool tip for bookmark clear button"
-  },
-  "RemoveSelectedLocationTip": {
-    "message":"Remove location from selection",
-    "description":"Tool tip for bookmark remove location button"
-  },
-  "AddLocationTip": {
-    "message":"Add location to selection",
-    "description":"Tool tip for bookmark add location button"
-  },  
-  "AddNewLocationTip": {
-    "message":"Create a new location label",
-    "description":"Tool tip for bookmark add location button"
-  },
-  "setCurrentLocationTip": {
-    "message":"Click to set current location",
-    "description":"Location labels in the header tool tip"
-  },
-  "RemoveLocationTip": {
-    "message":"Click to remove location",
-    "description":"Click to remove the location"
-  },
-  "SyncWarning": {
-    "message":"Preventing continued action because sync could not complete.",
-    "description":"Shown when sync could not complete"
-  },
-  "ActionInProgress": {
-    "message":"Preventing continued action because an action is already taking place.",
-    "description":"Shown when an action is started and is blocked by a previous action."
-  }
+  "exSubTitle": {
+    "message":"Time reporting"
+    ,"description":"The extension subtitle displayed following after the exTitel in some titels and texts."
+  }  
 }

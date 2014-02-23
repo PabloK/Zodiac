@@ -1,6 +1,6 @@
 <!-- Add angular support -->
 <html lang="en" ng-csp ng-app="bookmark">
-  <head><title>Extension Options</title>
+  <head><title ng-bind="lz('exTitle') + ' - ' + lz('exSubTitle')"></title>
     <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
   </head>
@@ -10,13 +10,17 @@
         <div class="container">
           <div class="row">
             <div class="navbar-header col-md-12">
-              <span class="navbar-brand"><img id="imglogo" src="../../icons/icon48.png"> Bookmark anywhere</span>
+              <span class="navbar-brand"><img id="imglogo" src="../../icons/icon48.png">
+                <span  ng-bind="lz('exTitle')"></span>
+              </span>
             </div>
           </div>
         </div>
       </nav>
     </header>
+    
     <div class="container"  ng-view></div>
+    
     <div>
       <script type="text/javascript" src="../../js/vendor/jq.min.js"></script>
       <script type="text/javascript" src="../../js/vendor/bootstrap.min.js" /></script>
