@@ -1,10 +1,10 @@
 {
-  "name": "Bookmark anywhere",
-  "short_name": "BA",
-  "version": "0.0.7",
+  "name": "Zodiac",
+  "short_name": "ZC",
+  "version": "0.0.1",
   "manifest_version": 2,
-  "description": "Use different Bookmarks in the bookmarks bar at different locations.",
-  "homepage_url": "https://github.com/PabloK/Bookmark-anywhere",
+  "description": "Organize time reports and report time",
+  "homepage_url": "https://github.com/PabloK/Zodiac",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -22,7 +22,7 @@
       "19": "icons/icon19.png",
       "48": "icons/icon48.png"            
   },
-    "default_title": "Bookmark anywhere",      
+    "default_title": "Zodiac - Time reporting",      
     "default_popup": "src/templates/options.html"
   },
   "content_scripts": [
@@ -42,7 +42,6 @@
     }
   ],
   "permissions": [
-    "bookmarks",
     "storage"
   ]
 }
