@@ -1,6 +1,6 @@
-Bookmark anywhere
+Zodiac
 =================
-Have you tired of having your work bookmarks filling chrome's bookmark bar at home or vice versa. This chrome plugin attempts to solve this problem with as little hassle as possible.
+The short term goal of Zodiac is to become a personal time reporting tool that will help you with your daily time reporting tasks. The long term goal is for Zodiac to export to a variety of time reporting systems making your time reporting seamlessly integrate with various time reporting tools. To achive this contributions to the project are going to be needed. Any one interested in contributing may email me on Pablo.Karlsson@gmail.com
 
 ###Requirements
 * Chrome browser.
@@ -9,10 +9,10 @@ Have you tired of having your work bookmarks filling chrome's bookmark bar at ho
 
 ###Getting started
 * Install the plugin from [Chrome webstore] (https://chrome.google.com/webstore/) 
-* Click The quick button next to the chrome settings button
-* Add your locations
-* Mark the location your currently at (do the same at other locations)
-* Markup bookmarks that should only show up in specific locations
-* Save your settings to the cloud
+* Click The quick button next to the chrome settings dropdown
+* Click the settings button for the app
+* Add the accounts you need to time report on
+* Set up your default start and stop times
+* Start your daily time reports
 
 This software is provided as is. The author of this extension can not be held liable for any harm caused by the useage of this software.
