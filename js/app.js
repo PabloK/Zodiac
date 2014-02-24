@@ -1,4 +1,6 @@
 'use strict';
+log.setLevel("info");
+log.info("intializing angular");
 var App = angular.module('bookmark', 
                          ['ngRoute',
                           'ui.keypress',
@@ -11,8 +13,8 @@ $routeProvider
   .otherwise({redirectTo: '/quick_window'});
 }]);
 App.run(function($rootScope) {
+    log.info("initializing rootscope localization function");
     $rootScope.lz = function (string) {
-        // do some stuff
         return localize(string);
     }
 })

@@ -14,7 +14,10 @@
   "options_page" : "src/templates/base_layout.html#/settings",
   "default_locale": "en",
   "background": {
-    "scripts": ["js/background.js"]
+    "scripts": [
+      "js/vendor/loglevel.min.js",
+      "js/background.js"
+    ]
   },
   "minimum_chrome_version" : "20",
   "browser_action": {
