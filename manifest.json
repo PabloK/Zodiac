@@ -11,7 +11,7 @@
     "128": "icons/icon128.png"
   },
   "author" : "Pablo Karlsson",
-  "options_page" : "src/templates/settings.html",
+  "options_page" : "src/templates/base_layout.html#/settings",
   "default_locale": "en",
   "background": {
     "scripts": ["js/background.js"]
@@ -23,7 +23,7 @@
       "48": "icons/icon48.png"            
   },
     "default_title": "Zodiac - Time reporting",      
-    "default_popup": "src/templates/quick-window.html"
+    "default_popup": "src/templates/base_layout.html#/quick_window"
   },
   "content_scripts": [
     {
@@ -33,6 +33,7 @@
             "js/vendor/date.js",
             "js/vendor/angular.min.js",
             "js/vendor/angular-route.min.js", 
+            "js/vendor/loglevel.min.js", 
             "js/vendor/bootstrap.min.js",
             "js/vendor/angular-ui.js",
             "js/app.js",
