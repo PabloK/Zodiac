@@ -16,3 +16,14 @@ The short term goal of Zodiac is to become a personal time reporting tool that w
 * Start your daily time reports
 
 This software is provided as is. The author of this extension can not be held liable for any harm caused by the useage of this software.
+
+
+###Development setup
+To install this software as a developer do the following.
+
+* git clone https://github.com/PabloK/Zodiac.git
+* Open chrome go to chrome://extensions
+* Check the "development mode" checkbox.
+* Press "Load unpacked extension".
+* Browse to the folder where you cloned the extension and select it.
+* Activate the extension by ticking the checkbox.
