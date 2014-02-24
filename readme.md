@@ -15,7 +15,10 @@ The short term goal of Zodiac is to become a personal time reporting tool that w
 * Set up your default start and stop times
 * Start your daily time reports
 
-This software is provided as is. The author of this extension can not be held liable for any harm caused by the useage of this software.
+###Disclaimer
+This software is provided as is any one is free to use it. Copies of this software fetched from un official sources like for instance this git repository are not concidered functional. All releases are found on chrome webstore.
+
+The author of this extension can not be held liable for any harm caused by the useage of this software.
 
 
 ###Development setup
