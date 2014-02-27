@@ -30,3 +30,6 @@ To install this software as a developer do the following.
 * Press "Load unpacked extension".
 * Browse to the folder where you cloned the extension and select it.
 * Activate the extension by ticking the checkbox.
+
+###Limitations
+Because of chrome sync limitations the app can maximally store 92 days of entries and maximally 20 time-boxes per day. After 92 days data the oldest day data will start being removed.
