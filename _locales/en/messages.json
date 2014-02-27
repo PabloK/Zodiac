@@ -6,5 +6,33 @@
   "exSubTitle": {
     "message":"Time reporting"
     ,"description":"The extension subtitle displayed following after the exTitel in some titels and texts."
-  }  
+  },
+  "workdayStart": {
+    "message":"Workday start"
+    ,"description":"The first time to display for a workday."
+  },
+  "workdayEnd": {
+    "message":"Workday end"
+    ,"description":"The first time to display for a workday."
+  },
+  "defaultLogStart": {
+    "message":"Default log start"
+    ,"description":"The time a defaulty workday starts."
+  },
+  "defaultLogEnd": {
+    "message":"Default log end"
+    ,"description":"The time when a default workday ends."
+  },
+  "defaultLabel": {
+    "message":"Default label"
+    ,"description":"The default label to set on a time-log"
+  },
+  "labels": {
+    "message":"Labels"
+    ,"description":"The label header"
+  },
+  "save": {
+    "message":"Save"
+    ,"description":"Displayed on a button that triggers the save action."
+  }
 }
