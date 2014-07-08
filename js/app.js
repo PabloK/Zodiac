@@ -17,4 +17,4 @@ App.run(function($rootScope) {
     $rootScope.lz = function (string) {
         return localize(string);
     }
-})
+});

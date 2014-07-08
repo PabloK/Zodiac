@@ -16,20 +16,38 @@
 <div class="clearfix">
 &nbsp;
 </div>
-<div class="progress">
-  <div class="time-box" style="width: 35%">
-    <span class="sr-only"></span>
+<div class="row">
+  <div class="col-xs-3" ng-bind="settings.ls"></div>
+  <div class="col-xs-3 col-xs-offset-6 text-right" ng-bind="settings.le"></div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="time-progress-padding">
+      <div class="progress">
+        <div class="time-box" style="width: 35%">
+          <span class="sr-only"></span>
+        </div>
+        <div class="time-box time-box-empty" style="width: 20%">
+          <span class="sr-only"></span>
+        </div>
+        <div class="time-box" style="width: 10%">
+          <span class="sr-only"></span>
+        </div>
+        <div class="time-box time-box-empty" style="width: 10%">
+          <span class="sr-only"></span>
+        </div>
+        <div class="time-box" style="width: 1%">
+          <span class="sr-only"></span>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="time-box time-box-empty" style="width: 20%">
-    <span class="sr-only"></span>
-  </div>
-  <div class="time-box" style="width: 10%">
-    <span class="sr-only"></span>
-  </div>
-  <div class="time-box time-box-empty" style="width: 10%">
-    <span class="sr-only"></span>
-  </div>
-  <div class="time-box" style="width: 1px">
-    <span class="sr-only"></span>
+</div>
+<div class="clearfix">
+&nbsp;
+</div>
+<div class="row">
+  <div class="center-block text-center" style="width:80%">
+    <button class="btn btn-default" type="button" ng-bind="lz('newMark')"></button>
   </div>
 </div>

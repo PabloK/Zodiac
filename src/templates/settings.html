@@ -2,28 +2,28 @@
   <div class="form-group">
     <label for="workdayStart" class="col-sm-4 control-label" ng-bind="lz('workdayStart')"></label>
     <div class="col-sm-8">
-      <input type="time" class="form-control" id="workdayStart">
+      <input type="time" class="form-control" id="workdayStart" ng-model="settings.ws">
     </div>
   </div>
   
   <div class="form-group">
     <label for="workdayEnd" class="col-sm-4 control-label" ng-bind="lz('workdayEnd')"></label>
     <div class="col-sm-8">
-      <input type="time" class="form-control" id="workdayEnd">
+      <input type="time" class="form-control" id="workdayEnd" ng-model="settings.we">
     </div>
   </div>
   
     <div class="form-group">
     <label for="defaultLogStart" class="col-sm-4 control-label" ng-bind="lz('defaultLogStart')"></label>
     <div class="col-sm-8">
-      <input type="time" class="form-control" id="defaultLogStart">
+      <input type="time" class="form-control" id="defaultLogStart" ng-model="settings.ls">
     </div>
   </div>
   
   <div class="form-group">
     <label for="defaultLogEnd" class="col-sm-4 control-label" ng-bind="lz('defaultLogEnd')"></label>
     <div class="col-sm-8">
-      <input type="time" class="form-control" id="defaultLogEnd">
+      <input type="time" class="form-control" id="defaultLogEnd" ng-model="settings.le">
     </div>
   </div>
   
@@ -37,7 +37,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-8">
-      <button type="submit" class="btn btn-default" ng-bind="lz('save')"></button>
+      <button ng-click="saveSettings()" type="submit" class="btn btn-default" ng-bind="lz('save')"></button>
     </div>
   </div>
 </div>

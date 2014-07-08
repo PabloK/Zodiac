@@ -34,5 +34,8 @@
   "save": {
     "message":"Spara"
     ,"description":"Displayed on a button that triggers the save action."
+  },"newMark": {
+    "message":"Ny markering"
+    ,"description":"Displayed on a button that adds a new time marking."
   }
 }
