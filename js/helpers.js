@@ -14,3 +14,8 @@ function safeCall(callback,t , args) {
     callback.call(t,args);
   }
 }
+function addLeadingZero(number){
+  var leading = "0" + number;
+  if (leading.length == 3) { leading = leading.substring(1); }
+  return leading;
+}

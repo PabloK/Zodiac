@@ -1,12 +1,24 @@
-body { padding-top: 70px; overflow-y: scroll; min-width: 500px; min-height: 175px;}
+body { padding-top: 70px; overflow-y: scroll; min-width: 500px; min-height: 80px;}
 .row { min-width: 500px; }
 .bokmarkbar { background-color: #EEE;}
 .navbar-brand { font-size: 1.5em; }
 .navbar-color { background-color: #333; }
 .navbar-brand { color: #FFF !important; }
 .pointer { cursor: pointer; }
-#imglogo { position:relative; bottom: 2px; width: 24px; margin: 0; padding: 0;}
+#imglogo { position:relative; bottom: 2px; width: 24px; margin: 0; padding: 0; margin-right: 2px;}
 #loader { margin-top:9px; margin-left: 15px;}
+#logo-text { 
+  font-family: 'Times New Roman';
+  color: #EEE;
+  text-decoration: overline;
+  word-spacing: normal;
+  text-align: left;
+  letter-spacing: 0;
+  font-size: 2.7em;
+  text-align: center;
+  position: relative;
+  top: 9px;
+}
 .ng-hide { display:none!important; }
 .date-nav { border-radius: 4px; padding: 9px 14px; margin:0px; margin-bottom: 14px; border: 1px solid #e1e1e8; }
 .btn-remove:active, .btn-remove:link,.btn-remove:visited, .btn-remove:hover { color: #000; background-color: #fff; border-color: #ccc; box-shadow: none;}
