@@ -30,14 +30,39 @@
   <div class="form-group">
     <label for="defaultLabel" class="col-sm-3 col-sm-offset-3 control-label" ng-bind="lz('defaultLabel')"></label>
     <div class="col-sm-2">
-      <select id="defaultLabel"></select>
+      <select id="defaultLabel" class="form-control" ng-model="settings.dl">
+        <option ng-repeat="(key , value) in labels" ng-bind="value" value="{{key}}"></option>
+      </select>
     </div>
   </div>
   
+  <div class="form-group">
+    <label for="defaultLabel" class="col-sm-3 col-sm-offset-3 control-label" ng-bind="lz('createLabel')"></label>
+     <div class="col-sm-2">
+      <div class="input-group">
+        <input type="text" class="form-control" id="addLabel" ng-model="newLabel" ui-keydown="{enter : 'createLabel(newLabel)'}">
+        <span class="input-group-addon btn btn-default" ng-click="createLabel(newLabel)">
+            <span class="glyphicon glyphicon-plus"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-4">
+      <span class="label-fix label label-default" ng-repeat="(key , value) in labels" ng-hide="value==null">
+        <span ng-bind="value"></span> <span class="pointer glyph-hover glyphicon glyphicon-remove" ng-click="removeLabel(value)"></span>
+      </span>
+    </div>
+  </div>
+  
+  <div class="clearfix">
+    &nbsp;
+  </div>
 
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-8">
-      <button ng-click="saveSettings()" type="submit" class="btn btn-default" ng-bind="lz('save')"></button>
+      <button ng-click="save()" type="submit" class="btn btn-default" ng-bind="lz('save')"></button>
     </div>
   </div>
 </div>

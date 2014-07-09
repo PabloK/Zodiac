@@ -38,5 +38,9 @@
   "newMark": {
     "message":"New mark"
     ,"description":"Displayed on a button that adds a new time marking."
+  },
+  "createLabel" :{
+    "message":"Create Label"
+    ,"description":"Displayed next to a field where a label can be added."
   }
 }

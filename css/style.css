@@ -28,3 +28,5 @@ body { padding-top: 70px; overflow-y: scroll; min-width: 500px; min-height: 80px
 .time-box-empty { opacity: 0; background-color: transparent; box-shadow: none; }
 .time-box:hover { opacity: 1.0; }
 .time-progress-padding { padding: 0 1em;}
+.label-fix { margin-right: 2px; display: inline-block; margin-bottom: 2px;}
+.glyph-hover:hover { color: black;}

@@ -107,6 +107,7 @@ function StorageService(callback) {
             
             synchronized = true;
             log.info("Synchronized!");
+            console.log(storage);
             safeCall(callback);
           });
         });
