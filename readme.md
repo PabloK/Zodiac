@@ -32,7 +32,7 @@ To install this software as a developer do the following.
 * Activate the extension by ticking the checkbox.
 
 ###Limitations
-Because of chrome sync limitations the app can maximally store 92 days of entries and maximally 20 time-boxes per day. After 92 days data the oldest day data will start being removed.
+Because of chrome sync limitations the app can maximally store 92 days of entries and maximally 20 time-boxes per day. After 92 days data the oldest data will be forgotten.
 
 ###License
 The MIT License (MIT)
